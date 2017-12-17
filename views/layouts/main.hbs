@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Stop</title>
+    <link href="/css/site.min.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/x-ico", href='/images/favicon.ico'>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <ul class="nav">
+                <li><a href="/">Home</a></li>                
+                {{#if currentUser}}
+                <li><a href="/product/add">Add Product</a></li>
+                <li><a href="/category/add">Add Category</a></li>
+                <li class="align-right">
+                    <form id="logout-form" action="/logout" method="post"></form>
+                    <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+                </li>
+                <li class="align-right">{{currentUser.username}}</li> 
+                {{else}}
+                <li class="align-right"><a href="/register">Register</a></li>
+                <li class="align-right"><a href="/login">Login</a></li>     
+                {{/if}}
+            </ul>
+        </header>
+        
+        <main>
+            {{#if globalError}}
+            <h1 class="error-msg">{{globalError}}</h1> 
+            {{/if}} 
+            {{{body}}}
+        </main>
+        <footer>
+            <p>&copy; ShopStop</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<form method="POST" enctype="multipart/form-data" class="form center-form" action="/product/edit/:{{product._id}}">
+  <h2>Edit Product</h2>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" value="{{product.name}}" class="input-field" />
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" name="description" type="text" class="input-field">{{product.description}}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input id="price" name="price" type="number" step="0.01" min="0" class="input-field" value="{{product.price}}" />
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png" class="input-field" value="{{image}}" />
+  </div>
+  <div class="form-group">
+    <label for="name">Group</label>
+    <select class="input-field" name="category">
+      {{#each categories}}
+      <option value="{{this._id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Edit" class="form-btn btn btn-warning" />
+  </div>
+</form>

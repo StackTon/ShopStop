@@ -1,0 +1,23 @@
+{{#if error}}
+<h2 class="error-msg">{{error}}</h2>
+{{/if}}
+{{#if succes}}
+<h2 class="success-msg">{{succes}}</h2>
+{{/if}}
+<h1 class="head-title">Welcome to ShopStop!</h1>
+<form id="search-form">
+  <input type="search" name="query" placeholder="Search...">
+  <input type="submit" value="Search">
+</form>
+{{#each products}}
+<div class="product-card">
+  <img class="product-img" src="{{this.image}}">
+  <h2>{{this.name}}</h2>
+  <p>{{this.description}}</p>
+
+  <a class="btn-success btn btn-small" href="/product/buy/{{this._id}}">Buy</a>
+  <a class="btn-warning btn btn-small" href="/product/edit/{{this._id}}">Edit</a>
+  <a class="btn-danger btn btn-small" href="/product/delete/{{this._id}}">Delete</a>
+  <a class="btn-primary btn btn-small" href="/category/{{this.category.name}}/products">More {{this.category.name}}</a>
+</div>
+{{/each}}
